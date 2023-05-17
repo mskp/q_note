@@ -1,0 +1,97 @@
+{%extends "base.html"%} {%block title%}Create a new account{%endblock%} {%block
+link%}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/login-signup.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/button.css') }}"
+/>
+<script
+  type="module"
+  src="{{ url_for('static', filename='js/signup.js') }}"
+  defer
+></script>
+<script
+  type="module"
+  src="{{ url_for('static', filename='js/module.js') }}"
+  defer
+></script>
+{%endblock%} {%block body%}
+<main>
+  <section class="center">
+    <h3 class="logo">
+      <span class="blue">Q</span><span class="pink">Note</span>
+    </h3>
+
+    <form
+      action="/signup"
+      method="post"
+      name="mycommunity-form"
+      id="mycommunity-form"
+      enctype="multipart/form-data"
+      onsubmit="return validateSignup()"
+    >
+      <div class="inp">
+        <input
+          autocomplete="off"
+          type="text"
+          name="name"
+          id="name"
+          maxlength="25"
+          required
+        />
+        <span id="name-span"></span>
+        <label for="name" id="label-name">Full Name</label>
+      </div>
+
+      <div class="inp">
+        <input
+          autocomplete="off"
+          type="text"
+          name="email"
+          id="email"
+          required
+        />
+        <span id="email-span"></span>
+        <label for="email" id="label-email">Email</label>
+      </div>
+
+      <div class="inp">
+        <input
+          autocomplete="off"
+          type="password"
+          name="password"
+          id="password"
+          required
+        />
+        <span id="password-span"></span>
+        <label for="password" id="label-password">Password</label>
+      </div>
+
+      <div class="inp">
+        <input
+          autocomplete="off"
+          type="password"
+          name="c-password"
+          id="c-password"
+          required
+        />
+        <span id="cpassword-span"></span>
+        <label for="c-password" id="label-cpassword">Confirm Password</label>
+      </div>
+
+      <input
+        disabled="disabled"
+        type="submit"
+        value="Sign Up"
+        id="submit"
+        onsubmit="validateSignup()"
+      />
+
+      <div class="signup-link">Already a member? <a href="login">Login</a></div>
+    </form>
+  </section>
+</main>
+{%endblock%}

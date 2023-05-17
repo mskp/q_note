@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    min-height: 100%;
+}
+
+/* body {
+    background-color: #202124;
+    overflow-y: scroll;
+    font-family: 'Poppins', sans-serif;
+    max-height: 100%;
+    color: white;
+
+} */
+
+main {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    padding: 0 1rem 0 1rem;
+}
+
+.createNote {
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#createNoteForm {
+    width: 100%;
+}
+
+input[type='text'], textarea {
+    display: block;    
+    max-width: 100%;
+    min-width: 100%;
+    border: 1px solid #5f6368;
+    font-family: inherit;
+    font-weight: 900;
+    background-color: #202124;
+    outline: none;
+    color: inherit;
+    padding: 1rem;
+}
+
+input[type='text'] {
+    border-bottom: none;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+input[type='text']::placeholder, textarea::placeholder {
+    color: #74777b;
+}
+
+textarea {
+    resize:none;
+    border-top: none;
+    overflow:hidden;
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    /* height: 2rem; */
+}
+
+.submitButton {
+    background-color: #202124;
+    padding: 0.5rem;
+    border-radius: .5rem;
+    margin-top: 1rem;   
+    border: 1px solid #5f6368;
+    color: inherit;
+    cursor: pointer;
+    width: 5rem;
+}
+.submitButton:hover {
+    /* opacity: .5; */
+    background-color: rgba(154,160,166,0.039)
+}
+
+.submitButton:disabled {
+    opacity: .5;
+}
+
+
+/* .notes {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    justify-items: flex-start;
+    gap: 2rem;
+    padding:3rem;
+} */
+
+.notes {
+    margin-top: 1rem;  
+    display: flex;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.noteTitle {
+    font-weight: 100;
+    font-size: 2rem;
+    word-wrap: break-word;
+}
+
+.note {
+    /* width: 30ch; */
+    padding: 1rem;
+    border: 1px solid #5f6368;
+    border-radius: 0.5rem;
+}
+
+.noteDescription {
+    --max-lines: 1;
+    --line-height: 1.4;
+    /* max-height: calc(var(--max-lines) * 1em *var(--line-height)); */
+    line-height: var(--line-height);
+    overflow: hidden;
+    position: relative;
+    word-wrap: break-word;
+    font-size: 1.5rem;
+}
+
+
+.noteDescription:has(+ .expand-button:not(:checked))::before {
+    content: '';
+    position: absolute;
+    height: calc(1em * var(--line-height));
+    width: 100%;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, #202124);
+}
+
+.expand-button {
+    appearance: none;
+    /* margin-top: 1rem; */
+    background-color: #202124;
+    padding: 0.5rem;
+    border-radius: .5rem;
+    margin-top: 0.5rem;   
+    border: 1px solid #5f6368;
+    color: inherit;
+    cursor: pointer;
+    text-align: center;
+    width: 5rem;
+}
+.expand-button:hover {
+    opacity: 0.6;
+}
+
+.expand-button::before {
+    content: "Expand";
+}
+
+.expand-button:checked::before {
+    content: "Collapse";
+}
+
+.noteDescription:has(+ .expand-button:checked) {
+    max-height: none;
+}
+
+.button {
+    background-color: #202124;
+    padding: 0.5rem;
+    border-radius: .5rem;
+    margin-top: 0.5rem;   
+    border: 1px solid #5f6368;
+    color: inherit;
+    cursor: pointer;
+    width: 5rem;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.update-btn {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.button:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 535px) {
+    .createNote {
+      width: 100%;
+    }
+
+    .notes {
+        width: 100%;
+    }
+    .note {
+        width: 100%;
+    }
+
+    .note:last-child {
+        margin-bottom: 1rem;
+    }
+  }

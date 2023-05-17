@@ -1,0 +1,71 @@
+{% extends "base.html" %} {% block title %}Create Note{% endblock %} {% block
+link %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/header.css') }}"
+/>
+<script defer src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %} {% block body %} {% include 'header.html' %}
+<main>
+  <section class="createNote">
+    <form action="/" method="post" id="createNoteForm">
+      <input
+        autocomplete="off"
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title"
+      />
+      <textarea
+        autocomplete="off"
+        name="description"
+        id="description"
+        placeholder="Take a note..."
+      ></textarea>
+    </form>
+    <button disabled="disabled" id="submitButton" class="submitButton">
+      Save
+    </button>
+  </section>
+
+  <section class="notes">
+    {% for note in notes %}
+    <article class="note currentNote" id="currentNote">
+      <h3 class="noteTitle" class="title">{{ note.title }}</h3>
+      <p class="noteDescription" class="description">{{ note.description }}</p>
+      <form action="/" method="post">
+        <a href="/note?note_id={{note.id}}" class="button">Delete</a>
+      </form>
+      <!-- <button  id="updateButton" class="button update-btn">Update</button> -->
+    </article>
+    {% endfor %}
+  </section>
+</main>
+<script>
+  const form = document.querySelector("#createNoteForm");
+  const submitButton = document.querySelector("#submitButton");
+
+  submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        window.location.href = "/home";
+      })
+      .catch(function (error) {
+        console.error("Error:", error);
+      });
+  });
+</script>
+{% endblock %}

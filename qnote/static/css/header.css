@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+}
+
+html {
+    font-size: 63.22%;
+}
+
+.blue {
+    color: blueviolet;
+}
+
+.pink {
+    color: pink;
+}
+
+span.pink, span.blue {
+    display: inline-block;
+}
+header {
+    z-index: 10;
+    position: sticky;
+    top: 0;
+    margin-bottom: 2rem;
+}
+nav {
+    background-color: #202124;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+    box-shadow: inset 0 -1px 0 0 #5f6368;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #202124;
+    overflow-y: scroll;
+}
+
+.brand-title {
+    font-size: 2rem;
+    margin: 1rem;
+    font-family: 'Rubik Bubbles', cursive;
+    font-weight: 100;
+    padding: .5rem;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-links .nav-link a {
+    display: block;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.nav-links .nav-link:hover {
+    opacity: .6;
+}

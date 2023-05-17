@@ -1,0 +1,68 @@
+{%extends "base.html"%} {%block title%} KeepUp - Secure note taking service
+{%endblock%} {%block link%}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/login-signup.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/button.css') }}"
+/>
+<script
+  type="module"
+  src="{{ url_for('static', filename='js/login.js') }}"
+  defer
+></script>
+<script
+  type="module"
+  src="{{ url_for('static', filename='js/module.js') }}"
+  defer
+></script>
+{%endblock%} {%block body%}
+<main>
+  <section class="center">
+    <h3 class="logo">
+      <span class="blue">Q</span><span class="pink">Note</span>
+    </h3>
+
+    <form
+      action="/login"
+      method="post"
+      name="mycommunity-form"
+      id="mycommunity-form"
+      onsubmit="return validateLogin()"
+    >
+      <div class="inp">
+        <input type="text" name="email" id="email" required />
+        <span id="email-span"></span>
+        <label for="email" id="label-email">Email</label>
+      </div>
+
+      <div class="inp">
+        <input
+          autocomplete="off"
+          type="password"
+          name="password"
+          id="password"
+          maxlength="20"
+          required
+        />
+        <span id="password-span"></span>
+        <label for="password" id="label-password">Password</label>
+      </div>
+
+      <input
+        disabled="disabled"
+        type="submit"
+        value="Login"
+        id="submit"
+        onsubmit="validateLogin()"
+      />
+
+      <div class="signup-link">
+        Don't have an account? <a href="signup">Sign up</a>
+      </div>
+    </form>
+  </section>
+</main>
+{%endblock%}
